@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html >
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="style.css">
+      
+      <title>Crud Operations</title>
+</head>
+<body>
+      <div class="container">
+            <div class="container-titlediv">
+                  <h1 class="container-titlediv-title">Kolay Proje</h1>
+            </div>
+            <div class="container-inputdiv">
+                  <div class="container-inputdiv-firstline">
+                        <div>
+                              <h3 class="container-inputdiv-titles">
+                                    ID
+                              </h3>
+                              <input type="text"class="container-inputdiv-inputs" placeholder="empty" id="idInput">
+                        </div>
+                        <div>
+                              <h3 class="container-inputdiv-titles">
+                                    FullName
+                              </h3>
+                              <input type="text"class="container-inputdiv-inputs" placeholder="empty" id="fullnameInput">
+                        </div>
+                  </div> 
+                  <div class="container-inputdiv-secondline">
+                        <div>
+                              <h3 class="container-inputdiv-titles">
+                                    City
+                              </h3>
+                              <input type="text"class="container-inputdiv-inputs" placeholder="empty" id="cityInput">
+                        </div>
+                        <div>
+                              <h3 class="container-inputdiv-titles">
+                                    Age
+                              </h3>
+                              <input type="text"class="container-inputdiv-inputs"  placeholder="empty" id="ageInput">
+                        </div>
+                  </div>
+                  <div class="container-inputdiv-buttondiv">
+                        <button class="container-inputdiv-buttondiv-savebutton" onclick="checkData()">Save</button>
+                        <button class="container-inputdiv-buttondiv-clearbutton" onclick="clearInputValues()">Clear</button>
+                  </div>
+                                                    
+            </div>
+            <div class="container-datatablediv">
+                  <table class="container-datatable" id="datatable">
+                        <tr >
+                              <th class="container-datatable-th-id">
+                                    ID
+                              </th>
+                              <th class="th">
+                                    Name
+                              </th>
+                              <th class="container-datatable-th-age">
+                                    Age
+                              </th>
+                              <th>
+                                    City
+                              </th>
+                              <th>
+                                    Actions
+                              </th>
+                        </tr>                        
+                  </table>
+            </div>
+            
+      </div>
+      <script src="app.js"></script>
+
+      
+</body>
+</html>

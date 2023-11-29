@@ -1,0 +1,138 @@
+html body{
+      width: 100%;
+      height: 100%;
+      background-color: rgb(71, 66, 66);
+      user-select: none;
+}
+.container{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;   
+      align-items: center;
+      gap: 50px;
+}
+
+.container-titlediv-title{
+      color: white;
+      font-size: 30px;   
+}
+.container-inputdiv{
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+}
+.container-inputdiv-firstline , .container-inputdiv-secondline{
+      display: flex;
+      gap: 200px;
+}
+.container-inputdiv-titles{
+      color: white;
+      font-size: 25px;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}     
+.container-inputdiv-inputs{
+      width: 300px;
+      height: 25px;
+      font-size: 17px;
+      color: white;
+      background-color: transparent;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      border-bottom: 2px solid;
+      
+      
+}
+.container-inputdiv-buttondiv{
+      display: flex;
+      justify-content: space-between;
+}
+.container-inputdiv-buttondiv-savebutton{
+      align-items: flex-start;
+      font-size: 23px;
+      color: white;
+      border: none;
+      width: 120px;
+      height: 50px;
+      background-color: rgb(6, 159, 6);
+      border-radius: 10px;
+}
+.container-inputdiv-buttondiv-savebutton:hover{
+      background-color: darkgreen;
+}
+.container-inputdiv-buttondiv-clearbutton{
+      align-items: flex-start;
+      font-size: 23px;
+      color: white;
+      border: none;
+      width: 120px;
+      height: 50px;
+      background-color: rgb(142, 154, 3);
+      border-radius: 10px;
+}
+.container-inputdiv-buttondiv-clearbutton:hover{
+      background-color: rgb(89, 89, 3);
+}
+.container-datatablediv{
+      display: flex;
+}
+.container-datatable{
+      display: flex;
+      flex-direction: column;     
+      
+}
+.container-datatable-row{
+      display: flex;
+      gap: 200px;
+}
+table{
+      background-color: black;
+}
+table , tr , th ,td {
+      border: 1px solid;
+      
+}    
+th{
+      color: white;
+      width: 230px;
+      height: 30px;
+      font-size: 19px;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.container-datatablediv-button-delete , .container-datatablediv-button-update{
+      border-radius: 7px;
+      width: 100px;
+      height: 32px;
+      font-size: 17px;
+      font-family: 'Times New Roman', Times, serif;
+      color: white;
+      border: none;
+}
+.container-datatablediv-button-update{
+      background-color: rgb(209, 66, 27);
+}
+
+
+.container-datatablediv-button-update:hover{
+      background-color: rgb(182, 7, 7);
+}
+.container-datatablediv-button-delete{
+      margin-left: 10px;
+      background-color: rgb(209, 3, 3);
+}
+
+.container-datatablediv-button-delete:hover{
+      background-color: rgb(140, 4, 4);
+}
+td{
+      color: white;
+      text-align: center;
+      height: 40px;
+      width: 230px;
+}
+
+.container-datatable-th-id , .container-datatable-th-age , .container-datatable-td-age,.container-datatable-td-id {
+   width: 50px;
+}  
+
