@@ -2,9 +2,9 @@ let listData = null;
 window.onload = function () {
       getData()
 };
-const src = 'https://6565ad61eb8bb4b70ef21a9e.mockapi.io/crud';
+const APIURL = 'https://6565ad61eb8bb4b70ef21a9e.mockapi.io/crud';
 async function getData() {
-      await fetch(src, {
+      await fetch(APIURL, {
             method: 'GET',
             headers: { 'content-type': 'application/json' },
       })
@@ -113,7 +113,7 @@ function writeData(element) {
 async function deleteData(element) {
       var row = element.closest('tr');
       let idDataThatWillDelete = row.cells[0].innerHTML;
-      var urlnew = new URL(src +'/' +  idDataThatWillDelete)
+      var urlnew = new URL(APIURL +'/' +  idDataThatWillDelete)
       await fetch(urlnew, {
             method: 'DELETE',
       }).then(result => {
@@ -150,7 +150,7 @@ async function addData(newName, newAge, newCity) {
             age: newAge,
             
       }
-      await fetch(src, {
+      await fetch(APIURL, {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(newData),
@@ -171,7 +171,7 @@ async function updateData(idCheck, newName, newAge, newCity) {
             name: newName,
             age: newAge,
       }
-      let link = new URL(src +'/' + idCheck);
+      let link = new URL(APIURL +'/' + idCheck);
       await fetch(link, {
             method: 'PUT',
             headers: { 'content-type': 'application/json' },
