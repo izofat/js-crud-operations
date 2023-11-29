@@ -2,8 +2,9 @@ let listData = null;
 window.onload = function () {
       getData()
 };
+const src = 'https://6565ad61eb8bb4b70ef21a9e.mockapi.io/crud';
 async function getData() {
-      await fetch('https://6565ad61eb8bb4b70ef21a9e.mockapi.io/crud', {
+      await fetch(src, {
             method: 'GET',
             headers: { 'content-type': 'application/json' },
       })
@@ -13,7 +14,8 @@ async function getData() {
                   }
             }).then(data => {
                   listData = data;
-                  showData()
+                  showData();
+                  clearInputValues();
             })
 }
 function showData() {
@@ -95,12 +97,16 @@ function showData() {
       }
 }
 function writeData(element) {
+      var goBackButton = document.getElementById('gobackbutton');
+      goBackButton.classList.add('container-inputdiv-buttondiv-goback-comeback');
+      var actionButton = document.getElementById('actionButton');
+      actionButton.textContent = 'Update';
       var row = element.closest('tr');
-      var idInput = document.getElementById('idInput');
+      var idData = document.getElementById('idData');
       var fullnameInput = document.getElementById('fullnameInput');
       var cityInput = document.getElementById('cityInput');
       var ageInput = document.getElementById('ageInput');
-      idInput.value = row.cells[0].innerHTML.trim();
+      idData.textContent = row.cells[0].innerHTML.trim();
       fullnameInput.value = row.cells[1].innerHTML.trim();
       ageInput.value = row.cells[2].innerHTML.trim();
       cityInput.value = row.cells[3].innerHTML.trim();
@@ -108,8 +114,7 @@ function writeData(element) {
 async function deleteData(element) {
       var row = element.closest('tr');
       let idDataThatWillDelete = row.cells[0].innerHTML;
-      let baseurl = 'https://6565ad61eb8bb4b70ef21a9e.mockapi.io/crud/'
-      var urlnew = new URL(baseurl + idDataThatWillDelete)
+      var urlnew = new URL(src +'/' +  idDataThatWillDelete)
       await fetch(urlnew, {
             method: 'DELETE',
       }).then(result => {
@@ -122,8 +127,8 @@ async function deleteData(element) {
       })
 }
 function checkData() {
-      var elementIdInput = document.getElementById('idInput');
-      let id = elementIdInput.value.trim();
+      var elementIdData = document.getElementById('idData');
+      let id = elementIdData.textContent.trim();
       var elementFullnameInput = document.getElementById('fullnameInput');
       let fullname = elementFullnameInput.value.trim();
       var elementCityInput = document.getElementById('cityInput');
@@ -134,21 +139,21 @@ function checkData() {
             alert('Fill the empty spaces');
       }
       else if (listData.some(obj => obj.id == id)) {
-            updateData(id, fullname, age, city);
+            updateData(id,fullname, age, city);
       }
       else {
-            addData(id, fullname, age, city);
+            addData(fullname, age, city);
       }
 }
 
-async function addData(newId, newName, newAge, newCity) {
+async function addData(newName, newAge, newCity) {
       let newData = {
             city: newCity,
             name: newName,
             age: newAge,
-            id: newId,
+            
       }
-      await fetch('https://6565ad61eb8bb4b70ef21a9e.mockapi.io/crud', {
+      await fetch(src, {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(newData),
@@ -168,7 +173,7 @@ async function updateData(id, newName, newAge, newCity) {
             name: newName,
             age: newAge,
       }
-      let link = new URL('https://6565ad61eb8bb4b70ef21a9e.mockapi.io/crud/' + id);
+      let link = new URL(src +'/' + id);
       await fetch(link, {
             method: 'PUT',
             headers: { 'content-type': 'application/json' },
@@ -185,12 +190,20 @@ async function updateData(id, newName, newAge, newCity) {
 }
 
 function clearInputValues() {
-      var elementIdInput = document.getElementById('idInput');
-      elementIdInput.value = "";
+      let newId = parseInt(listData[listData.length-1].id)+1;
+      var elementIdData = document.getElementById('idData');
+      elementIdData.textContent = newId;
       var elementFullnameInput = document.getElementById('fullnameInput');
       elementFullnameInput.value = "";
       var elementCityInput = document.getElementById('cityInput');
       elementCityInput.value = "";
       var elementAgeInput = document.getElementById('ageInput');
       elementAgeInput.value = "";
+}
+function changeAction(){
+      var elementGoBack = document.getElementById('gobackbutton');
+      elementGoBack.classList.remove('container-inputdiv-buttondiv-goback-comeback');
+      clearInputValues();
+      var elementActionButton = document.getElementById('actionButton');
+      elementActionButton.textContent ="Save";
 }

@@ -24,6 +24,7 @@ html body{
 }
 .container-inputdiv-firstline , .container-inputdiv-secondline{
       display: flex;
+      justify-content: space-between;
       gap: 200px;
 }
 .container-inputdiv-titles{
@@ -135,4 +136,24 @@ td{
 .container-datatable-th-id , .container-datatable-th-age , .container-datatable-td-age,.container-datatable-td-id {
    width: 50px;
 }  
-
+.container-inputdiv-firstline-id-span{
+      font-size: 20px;
+      color: white;
+      font-family: 'Times New Roman', Times, serif;
+}
+.container-inputdiv-buttondiv-goback{
+      display: none;
+      font-size: 16px;
+      color: white;
+      border: none;
+      width: 120px;
+      height: 50px;
+      background-color: rgb(6, 159, 6);
+      border-radius: 10px;
+}
+.container-inputdiv-buttondiv-goback:hover{
+      background-color: darkgreen;
+}
+.container-inputdiv-buttondiv-goback-comeback{
+      display: block;
+}
