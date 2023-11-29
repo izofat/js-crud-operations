@@ -15,7 +15,6 @@ async function getData() {
             }).then(data => {
                   listData = data;
                   showData();
-                  clearInputValues();
             })
 }
 function showData() {
@@ -96,17 +95,17 @@ function showData() {
             parentElement.appendChild(childOlder);
       }
 }
+let id = -1;
 function writeData(element) {
       var goBackButton = document.getElementById('gobackbutton');
       goBackButton.classList.add('container-inputdiv-buttondiv-goback-comeback');
       var actionButton = document.getElementById('actionButton');
       actionButton.textContent = 'Update';
       var row = element.closest('tr');
-      var idData = document.getElementById('idData');
       var fullnameInput = document.getElementById('fullnameInput');
       var cityInput = document.getElementById('cityInput');
       var ageInput = document.getElementById('ageInput');
-      idData.textContent = row.cells[0].innerHTML.trim();
+      id = row.cells[0].innerHTML.trim();
       fullnameInput.value = row.cells[1].innerHTML.trim();
       ageInput.value = row.cells[2].innerHTML.trim();
       cityInput.value = row.cells[3].innerHTML.trim();
@@ -127,15 +126,13 @@ async function deleteData(element) {
       })
 }
 function checkData() {
-      var elementIdData = document.getElementById('idData');
-      let id = elementIdData.textContent.trim();
       var elementFullnameInput = document.getElementById('fullnameInput');
       let fullname = elementFullnameInput.value.trim();
       var elementCityInput = document.getElementById('cityInput');
       let city = elementCityInput.value.trim();
       var elementAgeInput = document.getElementById('ageInput');
       let age = elementAgeInput.value.trim();
-      if (id == "" || fullname == "" || city == "" || age == "") {
+      if (fullname == "" || city == "" || age == "") {
             alert('Fill the empty spaces');
       }
       else if (listData.some(obj => obj.id == id)) {
@@ -164,16 +161,17 @@ async function addData(newName, newAge, newCity) {
       }).then(task => {
             getData();
             clearInputValues();
+            
       })
 
 }
-async function updateData(id, newName, newAge, newCity) {
+async function updateData(idCheck, newName, newAge, newCity) {
       let newData = {
             city: newCity,
             name: newName,
             age: newAge,
       }
-      let link = new URL(src +'/' + id);
+      let link = new URL(src +'/' + idCheck);
       await fetch(link, {
             method: 'PUT',
             headers: { 'content-type': 'application/json' },
@@ -185,14 +183,12 @@ async function updateData(id, newName, newAge, newCity) {
       }).then(task => {
             getData();
             clearInputValues();
+            changeAction();
       });
 
 }
 
 function clearInputValues() {
-      let newId = parseInt(listData[listData.length-1].id)+1;
-      var elementIdData = document.getElementById('idData');
-      elementIdData.textContent = newId;
       var elementFullnameInput = document.getElementById('fullnameInput');
       elementFullnameInput.value = "";
       var elementCityInput = document.getElementById('cityInput');
@@ -205,5 +201,5 @@ function changeAction(){
       elementGoBack.classList.remove('container-inputdiv-buttondiv-goback-comeback');
       clearInputValues();
       var elementActionButton = document.getElementById('actionButton');
-      elementActionButton.textContent ="Save";
+      elementActionButton.textContent ='Save';
 }

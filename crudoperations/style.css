@@ -136,11 +136,6 @@ td{
 .container-datatable-th-id , .container-datatable-th-age , .container-datatable-td-age,.container-datatable-td-id {
    width: 50px;
 }  
-.container-inputdiv-firstline-id-span{
-      font-size: 20px;
-      color: white;
-      font-family: 'Times New Roman', Times, serif;
-}
 .container-inputdiv-buttondiv-goback{
       display: none;
       font-size: 16px;
